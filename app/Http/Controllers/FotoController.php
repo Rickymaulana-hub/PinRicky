@@ -3,20 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FotoController extends Controller
 {
+    public function editfoto(Request $request, $id){
+        $user = auth()->user();
+        $albums = Album::where('user_id', Auth::user()->id)->get();
+        $foto = Foto::find($id);
+
+        return view('pages.edit-foto', compact('user', 'albums', 'foto'));
+    }
+
     public function editpostingan(Request $request, $id){
         $foto = Foto::find($id);
 
-        $foto->judul_foto            =$request->judul_foto;
-        $foto->deskripsi_foto        =$request->deskripsi_foto;
-        $foto->album_id              =$request->album;
+        $data_foto = [
+        'judul_foto'            =>$request->judul_baru,
+        'deskripsi_foto'        =>$request->deskripsi_baru
+       
+        ];
 
-        $foto->save();
         
-        return redirect()->back()->with('succes','Postingan Berhasil Di Perbaharui');
+
+        $foto->update($data_foto);
+        
+        return redirect()->back()->with('success','Postingan Berhasil Di Perbaharui');
 
     }
 

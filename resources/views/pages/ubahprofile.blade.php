@@ -45,8 +45,7 @@
                         <h5>Username</h5>
                         <input type="text" name="username" value="{{ $user->username }}" class="py-1 rounded-md">
                         </select>
-                        <h5>Alamat</h5>
-                        <input type="text" name="alamat" value="{{ $user->alamat }}" class="py-1 rounded-md">
+                       
 
                         <button type="submit" class="py-2 mt-4 text-white rounded-md bg-green-500">Perbaharui</button>
                     </div>

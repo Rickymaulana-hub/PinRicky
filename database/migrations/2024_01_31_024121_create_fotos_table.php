@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi_foto');
             $table->string('url');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('album_id');
+            $table->unsignedBigInteger('album_id')->nullable();
             $table->timestamps();
         });
     }

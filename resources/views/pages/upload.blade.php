@@ -41,6 +41,7 @@
 
                             <h3>Album</h3>
                             <select name="album" id="">
+                                <option value="">Pilih album</option>
                                 @foreach ($albums as $album )
                                 <option value="{{$album->id}}">{{$album->nama_album}}</option>
 
